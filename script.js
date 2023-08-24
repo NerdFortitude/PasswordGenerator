@@ -1,4 +1,5 @@
 // fetching all the elements from the dom
+const bodyElement = document.querySelector("body");
 const inputSlider = document.querySelector("[data-lengthSlider]");
 const lengthDisplay = document.querySelector("[data-lengthNumber]");
 const passwordDisplay = document.querySelector("[data-passwordDisplay]");
@@ -11,11 +12,38 @@ const symbolCheck = document.querySelector("#symbols");
 const indicator = document.querySelector("[data-indicator]");
 const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
+const themeChanger = document.querySelector(".themeChanger");
+const inputContainer = document.querySelector(".input-container");
+// const themeChanger1 = document.querySelector("#themechanger1");
+// const themeChanger2 = document.querySelector("#themechanger2");
+const logo = document.querySelector(".logo");
 const symbols = '~!@#$%^&*()-_+=[]|}{:;",.<>/?';
 
 let password = "";
 let passwordLength = 10;
 let checkcount = 0;
+
+themeChanger.addEventListener("click",()=>{
+    bodyElement.classList.toggle("bg-body-dark");
+    themeChanger.classList.toggle("bg-body-dark");
+    logo.classList.toggle("bg-body-dark");
+    generateBtn.classList.toggle("bg-body-dark");
+    inputContainer.classList.toggle("shadow");
+    // themeChanger1.classList.toggle("deactive-theme");
+    // themeChanger2.classList.toggle("deactive-theme");
+
+
+
+    // if(themeChanger.innerText === "🔆"){
+    //     console.log("this is inside if");
+    //     themeChanger.textContent = "🌙";
+    // }
+    // if(themeChanger.innerText === "🌙"){
+
+    //     themeChanger.innerText = "🔆";
+    // }
+
+})
 //set strength circle color to grey
 handleSlider();
 setIndicator("#ccc");
@@ -225,6 +253,11 @@ generateBtn.addEventListener('click',()=>{
 
 });
 
+
+function themeIconChanger(){
+    
+
+}
 
 
 
