@@ -14,14 +14,13 @@ const generateBtn = document.querySelector(".generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const themeChanger = document.querySelector(".themeChanger");
 const inputContainer = document.querySelector(".input-container");
-// const themeChanger1 = document.querySelector("#themechanger1");
-// const themeChanger2 = document.querySelector("#themechanger2");
 const logo = document.querySelector(".logo");
 const symbols = '~!@#$%^&*()-_+=[]|}{:;",.<>/?';
 
 let password = "";
 let passwordLength = 10;
 let checkcount = 0;
+let isdark = true;
 
 themeChanger.addEventListener("click",()=>{
     bodyElement.classList.toggle("bg-body-dark");
@@ -29,19 +28,17 @@ themeChanger.addEventListener("click",()=>{
     logo.classList.toggle("bg-body-dark");
     generateBtn.classList.toggle("bg-body-dark");
     inputContainer.classList.toggle("shadow");
-    // themeChanger1.classList.toggle("deactive-theme");
-    // themeChanger2.classList.toggle("deactive-theme");
 
+    if(isdark){
+        themeChanger.innerHTML = "🌙";
+         isdark = false;
+    }
+    else{
+        themeChanger.innerHTML = "🔆";
+        isdark = true;
+    }
 
-
-    // if(themeChanger.innerText === "🔆"){
-    //     console.log("this is inside if");
-    //     themeChanger.textContent = "🌙";
-    // }
-    // if(themeChanger.innerText === "🌙"){
-
-    //     themeChanger.innerText = "🔆";
-    // }
+    
 
 })
 //set strength circle color to grey
