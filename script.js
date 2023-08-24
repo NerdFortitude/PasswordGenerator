@@ -18,6 +18,7 @@ let passwordLength = 10;
 let checkcount = 0;
 //set strength circle color to grey
 handleSlider();
+setIndicator("#ccc");
 
 
 // sets password length
@@ -29,7 +30,7 @@ function handleSlider(){
 }
 
 function setIndicator(color){
-       indicator.style.backgroundcolor = color;
+       indicator.style.backgroundColor = color;
        //shadow
 
 }
@@ -146,6 +147,22 @@ for(let checkbox of allCheckBox){
 // });
 
 
+function shufflePassword(array){
+
+    //Fisher Yates Method
+    for(let i = array.length-1;i>0;i--){
+        const j = Math.floor(Math.random() * (i+1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+    }
+    let str = "";
+    array.forEach((el)=>str+=el);
+    return str;
+}
+
+
 
 generateBtn.addEventListener('click',()=>{
 
@@ -177,7 +194,6 @@ generateBtn.addEventListener('click',()=>{
         funcArr.push(generateSymbol);
     }
 
-    console.log(funcArr);
    
     //compulsory values
     for(let i = 0;i<funcArr.length;i++){
@@ -186,22 +202,23 @@ generateBtn.addEventListener('click',()=>{
 
     // remaining values
 
-    for(let i = 0;i<passwordLength-funcArr.length;i++){
-        
-        // let randIndex = getRandInterger(0,funcArr2.length-1);
+    for(let i = 0;i<passwordLength-funcArr.length;i++){   
         let randIndex = Math.floor(Math.random()*(funcArr.length));
         password += funcArr[randIndex]();
     }
 
+    
     //shuffle the password
  
+     password = shufflePassword(Array.from(password));
 
     //adding password to the display
     passwordDisplay.value = password;
 
 
+    calStrength();
 
-})
+});
 
 
 

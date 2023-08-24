@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -13,9 +18,9 @@
 
         <div class="display-container">
             <input readonly placeholder="Password" class="display" data-passwordDisplay>
-            <butto data-copy>
+            <button data-copy>
                 <span data-copyMsg>
-                        Copied
+                        
                 <span>
                 <img src="./assests/copy.svg" alt="" width="23" height="23">
             </button>
@@ -36,17 +41,18 @@
                    <label for="uppercase">Includes UpperCase letters</label>
             </div>
 
-            <div>
+            <!-- checkbox -->
+            <div class="check">
                 <input type="checkbox" name="" id="lowercase">
                 <label for="lowercase">Includes LowerCase letters</label>
             </div>
 
-            <div>
+            <div class="check">
                 <input type="checkbox" name="" id="numbers">
                 <label for="numbers">Includes Numbers</label>
             </div>
 
-            <div>
+            <div class="check">
                 <input type="checkbox" name="" id="symbols">
                    <label for="symbols">Includes Symbols</label>
             </div>
@@ -54,7 +60,9 @@
             <!-- strength section -->
             <div class="strength-container">
                 <p>Strength</p>
-                <div data-indicator></div>
+                <div class="indicator" data-indicator >
+                        
+                </div>
             </div>
 
             <!-- generate button -->
