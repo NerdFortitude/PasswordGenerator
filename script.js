@@ -9,13 +9,13 @@ const lowercaseCheck = document.querySelector("#lowercase");
 const numbersCheck = document.querySelector("#numbers");
 const symbolCheck = document.querySelector("#symbols");
 const indicator = document.querySelector("[data-indicator]");
-const generateBtn = document.querySelector(".generateButtons");
-const allCheckBox = document.querySelector("input[type=checkbox]");
+const generateBtn = document.querySelector(".generateButton");
+const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = '~!@#$%^&*()-_+=[]|}{:;",.<>/?';
 
 let password = "";
 let passwordLength = 10;
-let checkcount = 1;
+let checkcount = 0;
 //set strength circle color to grey
 handleSlider();
 
@@ -28,9 +28,10 @@ function handleSlider(){
 
 }
 
-
 function setIndicator(color){
        indicator.style.backgroundcolor = color;
+       //shadow
+
 }
 
 
@@ -38,7 +39,7 @@ function setIndicator(color){
 // generating random password
 
 function getRandInterger(min,max){
-    return Math.ceil(Math.random()*min + (max-min));
+    return Math.ceil(Math.random()*(max-min) + min);
 }
 
 function generateRandomNumber() {
@@ -82,10 +83,125 @@ function calStrength(){
         setIndicator("#f00");
     }
 
+    
 }
 
 
 
+async function copyContent(){
+
+    try{
+        await navigator.clipboard.writeText(passwordDisplay.value);
+        copyMsg.innerText = 'Copied';
+    }
+    catch(e){
+        copyMsg.innerText = 'Failed';
+    }
+   
+    //to make copy waala span invisible
+    copyMsg.classList.add('active');
+    setTimeout(()=>{
+        copyMsg.classList.remove('active');
+    },2000);
+    
+}
+
+
+inputSlider.addEventListener('input',(e)=>{
+    passwordLength = e.target.value;
+    handleSlider();
+})
+
+
+
+copyBtn.addEventListener('click',()=>{
+    if(passwordDisplay.value)
+       copyContent();
+});
+
+
+function handleCheckBoxChange(){
+    checkcount = 0;
+    
+       for(let checkbox of allCheckBox){
+       if(checkbox.checked){
+        checkcount++;
+       }
+    }
+
+
+    //special condition
+     if(passwordLength<checkcount){
+        passwordLength = checkcount;
+        handleSlider();
+     }
+
+}
+
+for(let checkbox of allCheckBox){
+    checkbox.addEventListener('change',handleCheckBoxChange);
+ }
+// allCheckBox.forEach(checkbox => {
+//     checkbox.addEventListener('change',handleCheckBoxChange);
+// });
+
+
+
+generateBtn.addEventListener('click',()=>{
+
+    if(checkcount <=0){
+        return;
+    }
+
+    if(passwordLength<checkcount){
+        passwordLength = checkcount;
+        handleSlider();
+    }
+
+    //reset old passoword
+    password = "";
+
+    //this functionArr depends on the condition is the checkboxes are checked
+    let funcArr = [];
+
+    if(uppercaseCheck.checked){
+        funcArr.push(generateupperCase);
+    }
+    if(lowercaseCheck.checked){
+        funcArr.push(generatelowerCase);
+    }
+    if(numbersCheck.checked){
+        funcArr.push(generateRandomNumber);
+    }
+    if(symbolCheck.checked){
+        funcArr.push(generateSymbol);
+    }
+
+    console.log(funcArr);
+   
+    //compulsory values
+    for(let i = 0;i<funcArr.length;i++){
+        password += funcArr[i]();
+    }
+
+    // remaining values
+
+    for(let i = 0;i<passwordLength-funcArr.length;i++){
+        
+        // let randIndex = getRandInterger(0,funcArr2.length-1);
+        let randIndex = Math.floor(Math.random()*(funcArr.length));
+        password += funcArr[randIndex]();
+    }
+
+    //shuffle the password
+ 
+
+    //adding password to the display
+    passwordDisplay.value = password;
+
+
+
+})
 
 
 
