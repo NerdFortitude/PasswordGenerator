@@ -11,7 +11,7 @@
 
 :root{
 
-    --lt-background: #712cf9;
+    --lt-background: #1281f8;
     --lt-violet: hsl(268, 47%, 21%);
     --lt-text:rgb(212, 210, 210);
     --lt-violet2: hsl(281, 89%, 26%);
@@ -32,7 +32,7 @@ body{
     display: flex;
     align-items: center;
     justify-content:center;
-    background: linear-gradient(90deg, rgba(0, 255, 235, 1) 0%, rgba(113, 44, 249, 1) 0%, rgba(113, 44, 249, 1) 100%);
+    background: linear-gradient(90deg, #1281f8 0%, #1281f8 0%, #1281f8 100%);
     flex-direction: column;
     transition: all 0.3s linear;
 }
