@@ -27,6 +27,7 @@ themeChanger.addEventListener("click",()=>{
     themeChanger.classList.toggle("bg-body-dark");
     logo.classList.toggle("bg-body-dark");
     generateBtn.classList.toggle("bg-body-dark");
+    generateBtn.style.cssText = 'border:1px solid white;'
     inputContainer.classList.toggle("shadow");
 
     if(isdark){
