@@ -11,7 +11,7 @@
 
 :root{
 
-    --lt-background: #1281f8;
+    --lt-background: #79ace2;
     --lt-violet: hsl(268, 47%, 21%);
     --lt-text:rgb(212, 210, 210);
     --lt-violet2: hsl(281, 89%, 26%);
@@ -194,7 +194,6 @@ h1{
 
 
   .slider{
-    
     appearance: none;
     width: 100%;
     height: 0.75rem;
